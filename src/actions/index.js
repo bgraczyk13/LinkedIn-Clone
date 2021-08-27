@@ -54,7 +54,7 @@ export function signOutAPI() {
 export function postArticleAPI(payload) {
   return (dispatch) => {
     dispatch(setLoading(true));
-    if (payload.image != "") {
+    if (payload.image !== "") {
       const upload = storage
         .ref(`images/${payload.image.name}`)
         .put(payload.image);

@@ -58,7 +58,7 @@ const PostModal = (props) => {
         <Container>
           <Content>
             <Header>
-              <h2>Create a post</h2>
+              <h2>Create a new post</h2>
               <button onClick={(event) => reset(event)}>
                 <img src="/images/bx-x.svg" alt="" />
               </button>

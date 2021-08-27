@@ -32,123 +32,111 @@ const Main = (props) => {
   };
 
   return (
-    <>
-      {props.articles.length === 0 ? (
-        <p>There are no articles</p>
-      ) : (
-        <Container>
-          <ShareBox>
-            <div>
-              {props.user && props.user.photoURL ? (
-                <img src={props.user.photoURL} />
-              ) : (
-                <img src="/images/user.svg" alt="" />
-              )}
-              <button
-                onClick={handleClick}
-                disabled={props.loading ? true : false}
-              >
-                Start a post
-              </button>
-            </div>
-            <div>
-              <button>
-                <img src="/images/bx-photo-album.svg" alt="" />
-                <span>Photo</span>
-              </button>
+    <Container>
+      <ShareBox>
+        <div>
+          {props.user && props.user.photoURL ? (
+            <img src={props.user.photoURL} />
+          ) : (
+            <img src="/images/user.svg" alt="" />
+          )}
+          <button onClick={handleClick} disabled={props.loading ? true : false}>
+            Start a post
+          </button>
+        </div>
+        <div>
+          <button>
+            <img src="/images/bx-photo-album.svg" alt="" />
+            <span>Photo</span>
+          </button>
 
-              <button>
-                <img src="/images/bxs-videos.svg" alt="" />
-                <span>Video</span>
-              </button>
+          <button>
+            <img src="/images/bxs-videos.svg" alt="" />
+            <span>Video</span>
+          </button>
 
-              <button>
-                <img src="/images/bx-calendar-check.svg" alt="" />
-                <span>Event</span>
-              </button>
+          <button>
+            <img src="/images/bx-calendar-check.svg" alt="" />
+            <span>Event</span>
+          </button>
 
-              <button>
-                <img src="/images/bx-book-content.svg" alt="" />
-                <span>Write article</span>
-              </button>
-            </div>
-          </ShareBox>
-          <Content>
-            {props.loading && <img src="/images/Spinner-1s-200px.svg" />}
-            {props.articles.length > 0 &&
-              props.articles.map((article, key) => (
-                <Article key={key}>
-                  <SharedActor>
-                    <a>
-                      <img src={article.actor.image} alt="" />
-                      <div>
-                        <span>{article.actor.title}</span>
-                        <span>{article.actor.description}</span>
-                        <span>
-                          {article.actor.date.toDate().toLocaleDateString()}
-                        </span>
-                      </div>
-                    </a>
-                    <button>
-                      <img
-                        src="/images/bx-dots-horizontal-rounded.svg"
-                        alt=""
-                      />
-                    </button>
-                  </SharedActor>
-                  <Description>{article.description}</Description>
-                  <SharedImg>
-                    <a>
-                      {!article.SharedImg && article.video ? (
-                        <ReactPlayer width={"100%"} url={article.video} />
-                      ) : (
-                        article.sharedImg && <img src={article.sharedImg} />
-                      )}
-                    </a>
-                  </SharedImg>
-                  <SocialCounts>
-                    <li>
-                      <button>
-                        <img
-                          src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
-                          alt=""
-                        />
-                        <img
-                          src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
-                          alt=""
-                        />
-                        <span>96</span>
-                      </button>
-                    </li>
-                    <li>
-                      <a>{article.comments}</a>
-                    </li>
-                  </SocialCounts>
-                  <SocialActions>
-                    <button>
-                      <img src="/images/bx-like.svg" alt="" />
-                      <span>Like</span>
-                    </button>
-                    <button>
-                      <img src="/images/bx-comment-detail.svg" alt="" />
-                      <span>Comments</span>
-                    </button>
-                    <button>
-                      <img src="/images/bxs-share.svg" alt="" />
-                      <span>Share</span>
-                    </button>
-                    <button>
-                      <img src="/images/bx-send.svg" alt="" />
-                      <span>Send</span>
-                    </button>
-                  </SocialActions>
-                </Article>
-              ))}
-          </Content>
-          <PostModal showModal={showModal} handleClick={handleClick} />
-        </Container>
-      )}
-    </>
+          <button>
+            <img src="/images/bx-book-content.svg" alt="" />
+            <span>Write article</span>
+          </button>
+        </div>
+      </ShareBox>
+      <Content>
+        {props.loading && <img src="/images/Spinner-1s-200px.svg" />}
+        {props.articles.length > 0 &&
+          props.articles.map((article, key) => (
+            <Article key={key}>
+              <SharedActor>
+                <a>
+                  <img src={article.actor.image} alt="" />
+                  <div>
+                    <span>{article.actor.title}</span>
+                    <span>{article.actor.description}</span>
+                    <span>
+                      {article.actor.date.toDate().toLocaleDateString()}
+                    </span>
+                  </div>
+                </a>
+                <button>
+                  <img src="/images/bx-dots-horizontal-rounded.svg" alt="" />
+                </button>
+              </SharedActor>
+              <Description>{article.description}</Description>
+              <SharedImg>
+                <a>
+                  {!article.SharedImg && article.video ? (
+                    <ReactPlayer width={"100%"} url={article.video} />
+                  ) : (
+                    article.sharedImg && <img src={article.sharedImg} />
+                  )}
+                </a>
+              </SharedImg>
+              <SocialCounts>
+                <li>
+                  <button>
+                    <img
+                      src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"
+                      alt=""
+                    />
+                    <img
+                      src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
+                      alt=""
+                    />
+                    <span>96</span>
+                  </button>
+                </li>
+                <li>
+                  <a>{article.comments}</a>
+                </li>
+              </SocialCounts>
+              <SocialActions>
+                <button>
+                  <img src="/images/bx-like.svg" alt="" />
+                  <span>Like</span>
+                </button>
+                <button>
+                  <img src="/images/bx-comment-detail.svg" alt="" />
+                  <span>Comments</span>
+                </button>
+                <button>
+                  <img src="/images/bxs-share.svg" alt="" />
+                  <span>Share</span>
+                </button>
+                <button>
+                  <img src="/images/bx-send.svg" alt="" />
+                  <span>Send</span>
+                </button>
+              </SocialActions>
+            </Article>
+          ))}
+      </Content>
+      <PostModal showModal={showModal} handleClick={handleClick} />
+    </Container>
   );
 };
 
